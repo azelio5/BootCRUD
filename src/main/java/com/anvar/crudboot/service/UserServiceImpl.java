@@ -3,10 +3,12 @@ package com.anvar.crudboot.service;
 import com.anvar.crudboot.dao.UserDaoImpl;
 import com.anvar.crudboot.model.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private final UserDaoImpl userDao;
