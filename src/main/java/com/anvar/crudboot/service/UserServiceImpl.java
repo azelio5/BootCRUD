@@ -1,8 +1,7 @@
 package com.anvar.crudboot.service;
 
+import com.anvar.crudboot.dao.UserDaoImpl;
 import com.anvar.crudboot.model.User;
-import com.anvar.crudboot.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,30 +9,35 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+    private final UserDaoImpl userDao;
 
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceImpl(UserDaoImpl userDao) {
+        this.userDao = userDao;
     }
 
     @Override
-    public User findById(Long id) {
-        return userRepository.findById(id).orElse(null);
+    public List<User> getAllUsers() {
+        return userDao.getAllUsers();
+    }
+
+
+    @Override
+    public User getUserById(long id) {
+        return userDao.getUserById(id);
     }
 
     @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public void addUser(User user) {
+        userDao.addUser(user);
     }
 
     @Override
-    public User saveUser(User user) {
-        return userRepository.save(user);
+    public void removeUser(long id) {
+        userDao.removeUser(id);
     }
 
     @Override
-    public void deleteById(Long id) {
-        userRepository.deleteById(id);
+    public void updateUser(User user) {
+        userDao.updateUser(user);
     }
 }

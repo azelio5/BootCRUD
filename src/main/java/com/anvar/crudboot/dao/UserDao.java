@@ -1,14 +1,13 @@
-package com.anvar.crudboot.service;
+package com.anvar.crudboot.dao;
 
 import com.anvar.crudboot.model.User;
 
 import java.util.List;
 
-public interface UserService {
-
+public interface UserDao {
 
     List<User> getAllUsers ();
-    Object getUserById(long id);
+    User getUserById(long id);
     void addUser(User user);
     void removeUser(long id);
     void updateUser(User user);
