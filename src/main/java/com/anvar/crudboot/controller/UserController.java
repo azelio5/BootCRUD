@@ -9,10 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
+@RequestMapping(value = "/")
 public class UserController {
 
     private final UserService userService;
@@ -22,7 +24,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
+    @GetMapping("/")
     public String findAll(Model model){
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
@@ -37,13 +39,13 @@ public class UserController {
     @PostMapping("/user-create")
     public String createUser(User user){
         userService.addUser(user);
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @GetMapping("user-delete/{id}")
     public String deleteUser(@PathVariable("id") Long id){
         userService.removeUser(id);
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @GetMapping("/user-update/{id}")
@@ -56,6 +58,6 @@ public class UserController {
     @PostMapping("/user-update")
     public String updateUser(User user){
         userService.updateUser(user);
-        return "redirect:/users";
+        return "redirect:/";
     }
 }

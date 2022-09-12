@@ -2,14 +2,14 @@ package com.anvar.crudboot.dao;
 
 import com.anvar.crudboot.model.User;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Component
-@Transactional
+@Repository
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
